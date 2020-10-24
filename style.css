@@ -1,0 +1,54 @@
+.main-heading{
+    padding-bottom: 1%;
+    color: white;
+    padding-left: 2%;
+    margin-bottom: 2%;
+    background-color: rgb(78, 77, 77);
+    text-shadow: 2px 2px black;
+}
+
+form{
+    width: 45%;
+    margin: auto;
+    padding: 1%;
+    background: rgb(34,193,195);
+    background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);    
+    border-radius: 15px;
+}
+
+footer{
+    text-align: center;
+}
+
+#hid{
+    display:none;
+}
+
+#txtarea{
+    display:none;
+}
+
+.form-check{
+    margin-left: 5%;
+}
+
+#subbtn{
+    margin-left: 40%;    
+}
+
+
+
+
+
+
+@media screen and (max-width: 700px) {
+    form{
+        width: 80%;
+    }
+
+    .btn-group{
+        margin-left: 0%;
+    }
+  }
+
+  

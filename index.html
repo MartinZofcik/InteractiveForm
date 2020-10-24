@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zadanie 3</title>
+</head>
+<body>
+    <h1 class="main-heading">Tvoje nemecké auto </h1>
+
+    <form action="" method="post" enctype="multipart/form-data">
+
+    <input type="hidden" name="apikey" value="">
+    <input type="hidden" name="from" value="">
+    <input type="hidden" name="sender" value="">
+    <input type="hidden" name="to" value="">
+    <input type="hidden" name="subject" value="">
+    <input type="hidden" name="redirectOk" value="">
+    <input type="hidden" name="redirectFalse" value="">
+
+        <h5 class="text-muted">1.Osobné údaje</h5>
+        <div class="row">
+            <div class="form-group col-sm-12 col-md-6">
+                <label for="firstname">Krstné meno*</label>
+                <input type="text" name="firstname" class="form-control" id="firstname" required>
+                <small class="text-muted" >Vaše krstné meno</small>
+            </div>
+            <div class="form-group col-sm-12 col-md-6">
+                <label for="lastname">Priezvisko</label>
+                <input type="text" name="lastname" class="form-control" id="lastname">
+                <small class="text-muted" >Vaše priezvisko</small>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-sm-12 col-md-6">
+                <label for="age">Vek*</label>
+                <input type="number" name="age" class="form-control" id="age" required>
+                <small class="text-muted" >Váš vek</small>
+            </div>
+            <div class="form-group col-sm-12 col-md-6">
+                <label for="dateofbirth">Dátum narodenia*</label>
+                <input type="date" name="dateofbirth" class="form-control" id="dateofbirth" required onchange="validateAge()">
+                <small class="text-muted" >Váš dátum narodenia</small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="email">E-mail*</label>
+            <input type="email" name="email" class="form-control" id="email" required>
+            <small class="text-muted" >Váš e-mail</small>
+        </div>
+        <hr>
+
+        <div class="form-group">
+            <label for="checkbox">Aké auto vlastníte?</label>
+            <div class="form-check">
+                <input class="form-check-input" name="car1" type="checkbox" value="kia" id="kia">
+                <label class="form-check-label" for="checkbox">Kia</label>
+            </div>
+                <div class="form-check">
+                <input class="form-check-input" name="car2" type="checkbox" value="peugeot" id="peugeot">
+                <label class="form-check-label" for="checkbox">Peugeot</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" name="car3" type="checkbox" value="fiat" id="fiat">
+                <label class="form-check-label" for="checkbox">Fiat</label>
+            </div> 
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="other" id="other" onchange="addTextarea()">
+                <label class="form-check-label" for="checkbox">Iné</label>
+                <textarea id="txtarea" name="othercar" cols="30" rows="3"></textarea>
+            </div>
+        </div>
+
+        <h5 class="text-muted">2.Auto</h5>
+        <label for="radio">Chcete nemecké auto?</label>
+        <div class="btn-group form-group" id="radio" data-toggle="buttons">
+            <label class="btn btn-secondary">
+            <input type="radio" name="question" id="yes" onchange=show()>Áno</label>
+            <label class="btn btn-secondary active">
+            <input type="radio" name="question" id="no" checked onchange=show()>Nie</label>
+        </div>
+
+        <div id="hid">
+
+        <div class="form-group">
+            <label for="brand">Značka</label>
+            <select name="brand" class="form-control" id="brand" onchange=addClass()>
+                <option value="none"></option>
+                <option value="volkswagen">Volkswagen</option>
+                <option value="opel">Opel</option>
+            </select>
+            <small class="text-muted">Zvoľte svoju obľúbenú značku</small>
+        </div>
+
+        <div class="form-group">
+            <label for="class">Trieda</label>
+            <select name="class" class="form-control" id="class" onchange=addModel()></select>
+            <small class="text-muted">Zvoľte triedu svojej obľúbenej značky</small>
+        </div>
+
+        <div class="form-group">
+            <label for="model">Model</label>
+            <select name="model" class="form-control" id="model"></select>
+            <small class="text-muted">Zvoľte konkrétny model</small>
+        </div>
+    </div>
+        <hr>
+        <button type="submit" id="subbtn" class="btn btn-warning" disabled>Odoslať</button>
+    </form>
+    <footer>Copyright&copy; 2020 Martin Žofčík</footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script> 
+    <script src="script.js"></script>
+</body>
+</html>
